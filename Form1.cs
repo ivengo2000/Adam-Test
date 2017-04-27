@@ -51,12 +51,8 @@ namespace AdamTest
 
                     var adamResponse = JsonConvert.DeserializeObject<AdamResponse>(System.Text.Encoding.Default.GetString(response));
 
-                    if (!adamResponse.Result.Equals("0"))
-                    {
-                        this.lbResponse.Text = adamResponse.Message;
-                    }
-
-                    this.lbResponse.Text = @"Success";
+                    this.lbResponse.Text = !adamResponse.Result.Equals("0") ? adamResponse.Message : @"Success";
+                    
                 }
             }
             catch (Exception ex)
